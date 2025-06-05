@@ -147,7 +147,7 @@ export function StoreCard({ store }: StoreCardProps) {
           <h2 className="text-sm sm:text-2xl font-bold line-clamp-1">{store.name}</h2>
           <p className="text-xs sm:text-sm text-muted-foreground">{store.location}</p>
           <div className="flex items-center gap-2 mt-1" style={{display : "flex",justifyContent: "space-between"}}>
-           <div>
+           <div className="flex gap-4">
            <Badge
               className={`${cardTypeColors.badgeBg} ${cardTypeColors.badgeText} text-xs px-1.5 py-0.5 font-medium`}
             >

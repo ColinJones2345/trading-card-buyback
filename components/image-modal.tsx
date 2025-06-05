@@ -719,7 +719,7 @@ export function ImageModal({ isOpen, onClose, store, initialImageIndex = 0 }: Im
           {/* 画像表示エリア */}
           <div
             ref={imageContainerRef}
-            className="relative bg-black flex items-center justify-center"
+            className="relative bg-black flex items-center justify-center [&::-webkit-scrollbar-thumb]:bg-transparent overflow-scroll"
             style={{
               touchAction: "none",
               height: availableHeight,
@@ -728,7 +728,7 @@ export function ImageModal({ isOpen, onClose, store, initialImageIndex = 0 }: Im
               padding: `${padding}px`,
               overflow: isMobile ? "hidden" : "auto",
               overflowY: "hidden",
-              scrollbarWidth: isMobile ? "none" : "thin",
+              scrollbarWidth: isMobile ? "none" : "none",
               msOverflowStyle: isMobile ? "none" : "auto",
             }}
             onClick={handleImageClick}
