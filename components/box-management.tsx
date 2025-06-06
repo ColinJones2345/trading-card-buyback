@@ -108,6 +108,7 @@ export function BoxManagement() {
   const [previewImageFiles, setPreviewImageFiles] = useState<File[]>([])
   const [previewImageUrls, setPreviewImageUrls] = useState<string[]>([])
   const [selectedImageIndex, setSelectedImageIndex] = useState<number>(0)
+  const [hotBadgeStatus,setHotBadgeStatus] = useState(false);
 
   const resetForm = () => {
     setFormData({
@@ -341,6 +342,7 @@ export function BoxManagement() {
         imageUrls: finalImageUrls.length > 0 ? finalImageUrls : undefined,
         date: currentDate,
         detailUrl: formData.detailUrl || undefined,
+        is_hot : hotBadgeStatus,
       }
 
       if (isEditing && currentBoxId) {
@@ -352,6 +354,7 @@ export function BoxManagement() {
       }
 
       resetForm()
+      setHotBadgeStatus(false)
     } catch (error) {
       console.error("Error submitting form:", error)
       alert("操作に失敗しました。もう一度お試しください。")
@@ -890,6 +893,15 @@ export function BoxManagement() {
                 </div>
               </div>
             </div>
+
+            <label>
+            <input
+              type="checkbox"
+              checked={hotBadgeStatus}
+              onChange={(e) => setHotBadgeStatus(e.target.checked)}
+            />
+            Hot 
+          </label>
 
             <div className="flex gap-2">
               <Button type="submit" className="flex-1" disabled={isUploading || operationInProgress}>

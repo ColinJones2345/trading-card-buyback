@@ -156,11 +156,18 @@ export function TradingCardContent() {
     return getLatestDate(b) - getLatestDate(a)
   })
 
+  const resultsortedStores = [...sortedStores].sort((a,b) => {
+    return b.is_hot-a.is_hot;
+  })
+
+  console.log(resultsortedStores);
+  
+
   // ページネーション計算
-  const totalPages = Math.ceil(sortedStores.length / ITEMS_PER_PAGE)
+  const totalPages = Math.ceil(resultsortedStores.length / ITEMS_PER_PAGE)
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE
   const endIndex = startIndex + ITEMS_PER_PAGE
-  const currentStores = sortedStores.slice(startIndex, endIndex)
+  const currentStores = resultsortedStores.slice(startIndex, endIndex)
 
   const handleFilterChange = (newFilters: { title: string | null; region: string | null; date: string | null }) => {
     setFilters(newFilters)
@@ -256,7 +263,7 @@ export function TradingCardContent() {
             <p className="text-xl text-muted-foreground mb-4">まだ買取表が登録されていません</p>
             <p className="text-muted-foreground">管理者によって買取表が追加されるまでお待ちください。</p>
           </div>
-        ) : sortedStores.length === 0 ? (
+        ) : resultsortedStores.length === 0 ? (
           <div className="mt-8 sm:mt-12 text-center px-1 sm:px-0 min-h-[400px] flex flex-col items-center justify-center">
             <CreditCard className="h-16 w-16 mx-auto text-muted-foreground mb-4" />
             <p className="text-xl text-muted-foreground">
@@ -279,12 +286,12 @@ export function TradingCardContent() {
             </div>
 
             {/* ページネーション */}
-            {sortedStores.length > ITEMS_PER_PAGE && (
+            {resultsortedStores.length > ITEMS_PER_PAGE && (
               <Pagination
                 currentPage={currentPage}
                 totalPages={totalPages}
                 onPageChange={handlePageChange}
-                totalItems={sortedStores.length}
+                totalItems={resultsortedStores.length}
                 itemsPerPage={ITEMS_PER_PAGE}
               />
             )}

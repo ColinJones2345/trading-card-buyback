@@ -13,4 +13,5 @@ export interface Box {
   keywords?: string[]
   createdAt?: string
   updatedAt?: string
+  is_hot?: boolean // ホットバッジの状態
 }

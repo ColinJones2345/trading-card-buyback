@@ -73,6 +73,7 @@ export function BoxProvider({ children }: { children: React.ReactNode }) {
           storeName: box.store_name || "",
           createdAt : box.created_at,
           updatedAt : box.updated_at,
+          is_hot : box.is_hot
         }))
 
         setBoxes(formattedBoxes)
@@ -143,6 +144,7 @@ export function BoxProvider({ children }: { children: React.ReactNode }) {
         description: boxData.description || null,
         keywords: boxData.keywords || null,
         store_name: boxData.storeName,
+        is_hot : boxData.is_hot
       }
 
       console.log("Inserting box data:", insertData)
@@ -183,6 +185,7 @@ export function BoxProvider({ children }: { children: React.ReactNode }) {
         description: box.description,
         keywords: box.keywords,
         storeName: box.store_name || "",
+        is_hot : box.is_hot
       }))
 
       setBoxes(formattedBoxes)
@@ -256,6 +259,7 @@ export function BoxProvider({ children }: { children: React.ReactNode }) {
         description: box.description,
         keywords: box.keywords,
         storeName: box.store_name || "",
+        is_hot : box.is_hot
       }))
 
       setBoxes(formattedBoxes)
@@ -309,6 +313,7 @@ export function BoxProvider({ children }: { children: React.ReactNode }) {
         description: box.description,
         keywords: box.keywords,
         storeName: box.store_name || "",
+        is_hot : box.is_hot
       }))
 
       setBoxes(formattedBoxes)
@@ -401,6 +406,7 @@ export function BoxProvider({ children }: { children: React.ReactNode }) {
         description: box.description,
         keywords: box.keywords,
         storeName: box.store_name || "",
+        is_hot : box.is_hot
       }))
 
       setBoxes(formattedBoxes)
@@ -559,6 +565,7 @@ export function BoxProvider({ children }: { children: React.ReactNode }) {
         description: box.description,
         keywords: box.keywords,
         storeName: box.store_name || "",
+        is_hot : box.is_hot
       }))
 
       setBoxes(formattedBoxes)

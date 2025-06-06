@@ -77,6 +77,7 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
           keywords: store.keywords,
           createdAt: store.created_at, // 追加
           updatedAt: store.updated_at, // 追加
+          is_hot : store.is_hot,
         }))
 
         setStores(formattedStores)
@@ -141,6 +142,7 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
         keywords: storeData.keywords,
         created_at: new Date().toISOString(),
         updated_at: new Date().toISOString(),
+        is_hot : storeData.is_hot,
       })
 
       if (error) {
@@ -179,6 +181,7 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
         keywords: store.keywords,
         createdAt: store.created_at, // 追加
         updatedAt: store.updated_at, // 追加
+        is_hot : store.is_hot
       }))
 
       setStores(formattedStores)
@@ -308,6 +311,7 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
         keywords: store.keywords,
         createdAt: store.created_at, // 追加
         updatedAt: store.updated_at, // 追加
+        is_hot : store.is_hot,
       }))
 
       setStores(formattedStores)
@@ -407,6 +411,7 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
         keywords: store.keywords,
         createdAt: store.created_at, // 追加
         updatedAt: store.updated_at, // 追加
+        is_hot : store.is_hot,
       }))
 
       setStores(formattedStores)
@@ -568,6 +573,7 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
         keywords: store.keywords,
         createdAt: store.created_at, // 追加
         updatedAt: store.updated_at, // 追加
+        is_hot : store.is_hot
       }))
 
       setStores(formattedStores)

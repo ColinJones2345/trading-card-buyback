@@ -15,4 +15,5 @@ export interface Store {
   description?: string // 店舗説明
   createdAt?: string // 作成日時を追加
   updatedAt?: string // 更新日時を追加
+  is_hot?: boolean // ホットバッジの状態
 }

@@ -5,6 +5,7 @@ import { useState, useRef } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { Checkbox } from "@/components/ui/checkbox"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import {
@@ -33,6 +34,7 @@ import type { Store } from "@/types/store"
 import { uploadImage, deleteImage, getResizedImageUrl } from "@/lib/storage"
 import { getCardTypeColor } from "@/components/filter-bar"
 import { Badge } from "@/components/ui/badge"
+import { isHTTPMethod } from "next/dist/server/web/http"
 
 const PREFECTURES = [
   "北海道",
@@ -107,6 +109,7 @@ export function StoreManagement() {
   const [previewImageFiles, setPreviewImageFiles] = useState<File[]>([])
   const [previewImageUrls, setPreviewImageUrls] = useState<string[]>([])
   const [selectedImageIndex, setSelectedImageIndex] = useState<number>(0)
+  const [hotBadgeStatus,setHotBadgeStatus] = useState(false);
 
   const resetForm = () => {
     setFormData({
@@ -328,6 +331,9 @@ export function StoreManagement() {
         })
         .replace(/\//g, ".")
 
+        console.log(hotBadgeStatus);
+        
+
       const storeData = {
         name: formData.name,
         location: formData.location,
@@ -336,6 +342,7 @@ export function StoreManagement() {
         imageUrls: finalImageUrls.length > 0 ? finalImageUrls : undefined,
         date: currentDate,
         detailUrl: formData.detailUrl || undefined,
+        is_hot : hotBadgeStatus,
       }
 
       if (isEditing && currentStoreId) {
@@ -347,6 +354,7 @@ export function StoreManagement() {
       }
 
       resetForm()
+      setHotBadgeStatus(false);
     } catch (error) {
       console.error("Error submitting form:", error)
       alert("操作に失敗しました。もう一度お試しください。")
@@ -870,6 +878,14 @@ export function StoreManagement() {
                 disabled={operationInProgress}
               />
             </div>
+            <label>
+      <input
+        type="checkbox"
+        checked={hotBadgeStatus}
+        onChange={(e) => setHotBadgeStatus(e.target.checked)}
+      />
+      Hot
+    </label>
 
             <div className="flex gap-2">
               <Button type="submit" className="flex-1" disabled={isUploading || operationInProgress}>
@@ -897,7 +913,7 @@ export function StoreManagement() {
       {/* 削除確認ダイアログ */}
       <Dialog open={deleteDialogOpen} onOpenChange={setDeleteDialogOpen}>
         <DialogContent>
-          <DialogHeader>
+          <DialogHeader>  
             <DialogTitle>買取表の削除</DialogTitle>
             <DialogDescription>この買取表を削除してもよろしいですか？この操作は元に戻せません。</DialogDescription>
           </DialogHeader>

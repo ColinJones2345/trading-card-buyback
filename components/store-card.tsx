@@ -159,7 +159,7 @@ export function StoreCard({ store }: StoreCardProps) {
               <Badge className="bg-red-500 text-white text-xs px-1.5 py-0.5 font-medium animate-pulse">NEW</Badge>
             )}
             </div>
-            {isNewOrUpdated(store.createdAt, store.updatedAt) && (
+            {isNewOrUpdated(store.createdAt, store.updatedAt) && store.is_hot && (
               <Badge className="bg-red-500 text-white text-xs px-1.5 py-0.5 font-medium animate-pulse">HOT</Badge>
             )}
           </div>
