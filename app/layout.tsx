@@ -20,15 +20,16 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ja" suppressHydrationWarning className="overflow-x-hidden">
-      <body className={`${inter.className} overflow-x-hidden`}>
+      <body className={`${inter.className} overflow-x-hidden min-h-screen flex flex-col`}>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
           <AuthProvider>
             <StoreProvider>
               <BoxProvider>
-                <div className="w-full overflow-x-hidden">
+                <div className="flex flex-col min-h-screen">
                   <Header />
-                  <div className="w-full [&::-webkit-scrollbar-thumb]:bg-transparent">{children}</div>
-                  <Footer />
+                  <main className="flex-1 flex flex-col overflow-hidden">
+                    <div className="h-[calc(100vh-0px)] w-full [&::-webkit-scrollbar-thumb]:bg-transparent overflow-y-auto">{children}</div>
+                  </main>
                 </div>
               </BoxProvider>
             </StoreProvider>

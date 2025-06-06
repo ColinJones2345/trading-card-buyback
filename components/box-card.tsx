@@ -196,12 +196,11 @@ export function BoxCard({ box }: BoxCardProps) {
               className="block cursor-pointer border border-gray-200 shadow-sm"
               onClick={handleImageClick}
               style={{
-                display: "block",
-                width: "100%",
-                height: "100%",
+                width: "50%",
+                height: "50%",
                 maxWidth: "100%",
-                maxHeight: "480px",
-                objectFit: "cover", // アスペクト比を保持しながら最大限表示
+                maxHeight: "100%",
+                objectFit: "contain", // アスペクト比を保持しながら最大限表示
               }}
               onError={(e) => handleImageError(e, currentImageIndex)}
               onLoad={(e) => handleImageLoad(e, currentImageIndex)}

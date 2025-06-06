@@ -183,11 +183,11 @@ export function StoreCard({ store }: StoreCardProps) {
               className="cursor-pointer shadow-sm p-2"
               onClick={handleImageClick}
               style={{
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
+                width: "50%",
+                height: "50%",
+                objectFit: "contain",
                 maxWidth: "100%",
-                maxHeight: "480px",
+                maxHeight: "100%",
               }}
               onError={(e) => handleImageError(e, currentImageIndex)}
               onLoad={(e) => handleImageLoad(e, currentImageIndex)}

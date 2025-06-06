@@ -10,6 +10,7 @@ import { Pagination } from "@/components/pagination"
 import { useStores } from "@/contexts/store-context"
 import { Loader2, ChevronUp, CreditCard } from "lucide-react"
 import { useAnimationEffects } from "@/hooks/use-animation-effects"
+import { Footer } from "@/components/footer"
 
 const ITEMS_PER_PAGE = 20
 
@@ -92,7 +93,7 @@ export function TradingCardContent() {
   }, [triggerHapticFeedback, createParticles])
 
   // 検索ロジック
-  const searchStores = (stores: typeof stores, query: string) => {
+  const searchStores = (stores: typeof stores, query: string) => {                        
     if (!query.trim()) return stores
 
     const lowercaseQuery = query.toLowerCase()
@@ -313,6 +314,7 @@ export function TradingCardContent() {
           <ChevronUp className="h-5 w-5" />
         </AnimatedButton>
       )}
+      <Footer />
     </div>
   )
 }

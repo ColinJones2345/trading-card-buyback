@@ -5,7 +5,7 @@ import Image from "next/image"
 
 export const Footer = () => {
   return (
-    <footer className="bg-gray-50  w-full">
+    <div className="bg-gray-50 w-full">
       {/* <div className="top-0 left-0 right-0 h-1 bg-gradient-to-r from-red-500 via-yellow-500 via-green-500 via-blue-500 via-indigo-500 to-purple-500"></div> */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
         {/* ロゴとリンクを横並びに */}
@@ -69,6 +69,6 @@ export const Footer = () => {
           </p>
         </div>
       </div>
-    </footer>
+    </div>
   )
 }

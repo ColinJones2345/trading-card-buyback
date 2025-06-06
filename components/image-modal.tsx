@@ -1,6 +1,7 @@
 "use client"
 
 import type React from "react"
+import {useSwipeable} from 'react-swipeable'
 
 import { useState, useEffect, useRef, useCallback } from "react"
 import { Dialog, DialogContent } from "@/components/ui/dialog"
@@ -465,6 +466,13 @@ export function ImageModal({ isOpen, onClose, store, initialImageIndex = 0 }: Im
     }
   }
 
+  const handlers = useSwipeable({
+    onSwipedLeft: () => navigateToPrevious(),
+    onSwipedRight: () => navigateToNext(),
+    // preventDefaultTouchmoveEvent: true,
+    trackMouse: true // Optional: for desktop testing
+  });
+
   // ヘッダーとフッターの高さを計算
   const headerHeight = isMobile ? 80 : 88
   const footerHeight = isMobile ? 120 : 120
@@ -641,7 +649,7 @@ export function ImageModal({ isOpen, onClose, store, initialImageIndex = 0 }: Im
                 </DropdownMenu>
               ) : (
                 <>
-                  {[
+                  {/* {[
                     ...(zoom > 1 ? [{ icon: ZoomOut, onClick: handleZoomOut, disabled: zoom <= 1.0 }] : []),
                     { icon: ZoomIn, onClick: handleZoomIn, disabled: zoom >= 5 },
                     { icon: Download, onClick: handleDownload, disabled: false },
@@ -662,9 +670,9 @@ export function ImageModal({ isOpen, onClose, store, initialImageIndex = 0 }: Im
                     >
                       <btn.icon className="h-4 w-4" />
                     </Button>
-                  ))}
+                  ))} */}
 
-                  <div
+                  {/* <div
                     className={`text-sm min-w-[3rem] text-center ${glassStyles.textColor} px-2 py-1 rounded-md mx-1`}
                     style={{
                       background: glassStyles.buttonBg,
@@ -674,7 +682,7 @@ export function ImageModal({ isOpen, onClose, store, initialImageIndex = 0 }: Im
                     }}
                   >
                     {Math.round(zoom * 100)}%
-                  </div>
+                  </div> */}
 
                   {store.detailUrl && (
                     <Button
@@ -747,7 +755,9 @@ export function ImageModal({ isOpen, onClose, store, initialImageIndex = 0 }: Im
                 width: "100%",
                 height: "100%",
                 transition: isDragging ? "none" : "transform 0.3s ease-out",
+                touchAction: 'pan-y'
               }}
+              {...handlers}
             >
               <img
                 ref={imageRef}

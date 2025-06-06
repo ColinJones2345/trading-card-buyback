@@ -5,6 +5,7 @@ import { TabNavigation } from "@/components/tab-navigation"
 import { TradingCardContent } from "@/components/trading-card-content"
 import { BoxContent } from "@/components/box-content"
 import { useAutoRefresh } from "@/hooks/use-auto-refresh"
+import { Footer } from "@/components/footer"
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState<"trading-cards" | "boxes">("trading-cards")
@@ -40,7 +41,7 @@ export default function Home() {
         </div>
 
         {/* コンテンツエリア - 最小高さを設定してレイアウトシフトを防ぐ */}
-        <div className="min-h-[calc(100vh-200px)] relative">
+        <div className="min-h-[calc(100vh-0px)] relative">
           {/* タブコンテンツを絶対配置でオーバーレイし、フェード効果を追加 */}
           <div
             className={`absolute inset-0 transition-all duration-300 ease-in-out ${
@@ -63,7 +64,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-
+      <Footer />
       {/* CSS アニメーション */}
       <style jsx>{`
        @keyframes fadeInUp {
